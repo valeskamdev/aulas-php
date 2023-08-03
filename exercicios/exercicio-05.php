@@ -81,9 +81,7 @@
     };
 
     $situacaoAluno = function (float $media): string {
-        if ($media >= 7) return "Aprovado";
-
-        return "Reprovado";
+        return $media >= 7 ? "Aprovado" : "Reprovado";
     };
     ?>
 
