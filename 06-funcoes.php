@@ -119,6 +119,16 @@
     <p>O número 10 é <?= verificaNegativo(10) ?></p>
     <p>O número -10 é <?= verificaNegativo(-10) ?></p>
 
+    <h2>Função anônima (ou closure, lambda)</h2>
+
+    <?php
+    $formatacaoPreco = function(float $valor): string {
+        return "R$" . number_format($valor, 2, ",", ".");
+    }; // <- importante o ponto e vírgula
+    ?>
+
+    <p>1000 formatado fica: <?=$formatacaoPreco(1000)?></p>
+
 
 </body>
 
