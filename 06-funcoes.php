@@ -71,16 +71,16 @@
 
 
     <!-- Usando função como parte  -->
-    <?php 
-    if(soma(2, 3, 10) >= 10) { ?>
-       <p>Kaue foi demitido!</p>
+    <?php
+    if (soma(2, 3, 10) >= 10) { ?>
+        <p>Kaue foi demitido!</p>
     <?php } ?>
 
-    
+
     <h2>Função com parâmetros opcionais</h2>
-    
+
     <?php
-    function saudacao($mensagem, $pessoa = "") : string
+    function saudacao($mensagem, $pessoa = ""): string
     {
         return "Olá, $mensagem $pessoa!";
     }
@@ -89,6 +89,33 @@
     <p><?= saudacao("bom dia", "Melissa") ?></p>
     <p><?= saudacao("boa noite", "Tanaka") ?></p>
     <p><?= saudacao("boa tarde") ?></p>
+
+    <h2>Indução de tipos de dados</h2>
+
+    <?php
+    /* tipos de dados mais comuns
+    - string -> texto
+    - int -> números inteiros
+    - float -> casas decimais
+    - array -> vetor 
+     */
+
+    /* isso auxiliará na entrada/saída correta dos dados manipulados pela função
+     além de auxiliar na documentação do código */
+
+    function verificaNegativo(int $valor): string
+    {
+        if ($valor < 0) {
+            return "negativo";
+        } else {
+            return "positivo";
+        }
+    }
+    ?>
+
+    <p>O número 10 é <?= verificaNegativo(10) ?></p>
+    <p>O número -10 é <?= verificaNegativo(-10) ?></p>
+    <p>O número 0 é <?= verificaNegativo("texto") ?></p>
 
 </body>
 
