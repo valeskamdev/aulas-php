@@ -103,7 +103,8 @@
                     <td><?= $aluno["nota2"] ?></td>
                   <?php $media = $mediaAluno($aluno["nota1"], $aluno["nota2"]); ?>
                     <td><?= $media ?></td>
-                    <td class="<?= $situacaoAluno($media) == "Aprovado" ? "aprovado" : "reprovado" ?>"><?= $situacaoAluno($media) ?></td>
+                    <td class="<?= $situacaoAluno($media) == "Aprovado" ? "aprovado"
+                        : "reprovado" ?>"><?= $situacaoAluno($media) ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
