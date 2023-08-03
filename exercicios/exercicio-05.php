@@ -49,27 +49,27 @@
     <?php
 
     $alunos = [
-        "Aluno 1" => [
+        [
             "nome" => "Leandro",
             "nota1" => 10,
             "nota2" => 8
         ],
-        "Aluno 2" => [
+        [
             "nome" => "Phelipe",
             "nota1" => 5,
             "nota2" => 6
         ],
-        "Aluno 3" => [
+        [
             "nome" => "Bueno",
             "nota1" => 7,
             "nota2" => 7
         ],
-        "Aluno 4" => [
+        [
             "nome" => "Eliel",
             "nota1" => 3,
             "nota2" => 4
         ],
-        "Aluno 5" => [
+        [
             "nome" => "Andre",
             "nota1" => 9,
             "nota2" => 10
@@ -105,8 +105,7 @@
                     <td><?= $aluno["nota2"] ?></td>
                   <?php $media = $mediaAluno($aluno["nota1"], $aluno["nota2"]); ?>
                     <td><?= $media ?></td>
-                  <?php $situacao = $situacaoAluno($media); ?>
-                    <td class="<?= $situacao == "Aprovado" ? "aprovado" : "reprovado" ?>"><?= $situacao ?></td>
+                    <td class="<?= $situacaoAluno($media) == "Aprovado" ? "aprovado" : "reprovado" ?>"><?= $situacaoAluno($media) ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
