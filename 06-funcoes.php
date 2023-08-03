@@ -105,17 +105,20 @@
 
     function verificaNegativo(int $valor): string
     {
+        // early return -> retorno antecipado
         if ($valor < 0) {
             return "negativo";
-        } else {
-            return "positivo";
         }
+        return "positivo";
     }
+
+    // codigo abaixo gerará um erro de execução pois o tipo de dado não é o esperado
+    /* <p>O número 0 é <?= verificaNegativo("texto") ?></p> */
     ?>
 
     <p>O número 10 é <?= verificaNegativo(10) ?></p>
     <p>O número -10 é <?= verificaNegativo(-10) ?></p>
-    <p>O número 0 é <?= verificaNegativo("texto") ?></p>
+
 
 </body>
 
