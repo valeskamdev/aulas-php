@@ -81,9 +81,8 @@
     };
 
     $situacaoAluno = function (float $media): string {
-        if ($media >= 7) {
-            return "Aprovado";
-        }
+        if ($media >= 7) return "Aprovado";
+
         return "Reprovado";
     };
     ?>
@@ -99,16 +98,17 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($alunos as $aluno) { 
-                ?>
+            <?php foreach ($alunos as $aluno) : ?>
                 <tr>
                     <td><?= $aluno["nome"] ?></td>
                     <td><?= $aluno["nota1"] ?></td>
                     <td><?= $aluno["nota2"] ?></td>
-                    <td><?= $mediaAluno($aluno["nota1"], $aluno["nota2"]) ?></td>
-                    <td class="<?= $situacaoAluno($mediaAluno($aluno["nota1"], $aluno["nota2"])) == "Aprovado" ? "aprovado" : "reprovado" ?>"><?= $situacaoAluno($mediaAluno($aluno["nota1"], $aluno["nota2"])) ?></td>
+                  <?php $media = $mediaAluno($aluno["nota1"], $aluno["nota2"]); ?>
+                    <td><?= $media ?></td>
+                  <?php $situacao = $situacaoAluno($media); ?>
+                    <td class="<?= $situacao == "Aprovado" ? "aprovado" : "reprovado" ?>"><?= $situacao ?></td>
                 </tr>
-            <?php } ?>
+            <?php endforeach; ?>
         </tbody>
 </body>
 
