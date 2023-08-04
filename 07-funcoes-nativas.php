@@ -22,6 +22,17 @@
     
     ?>
 
+    <h3>str_replace()</h3>
+    <?php 
+    // função que substitui uma string por outra
+    $fraseFeia = "O PHP é uma linguagem ultrapassada e insegura";
+    $fraseBonita = str_replace(["ultrapassada", "insegura"] , ["moderna", "segura"], $fraseFeia);
+
+    var_dump($fraseFeia);
+    var_dump($fraseBonita);
+
+    ?>
+
 
     <h2>Numéricas</h2>
 
