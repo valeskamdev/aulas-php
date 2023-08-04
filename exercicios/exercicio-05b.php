@@ -75,8 +75,8 @@
             "nota2" => 10
         ],
         [
-            "nome" => "Aline",
-            "nota1" => 6,
+            "nome" => "Andre",
+            "nota1" => 9,
             "nota2" => 10
         ]
     ];
@@ -108,7 +108,7 @@
                     <td><?= $aluno["nota2"] ?></td>
                     <?php $media = $mediaAluno($aluno["nota1"], $aluno["nota2"]); ?>
                     <td><?= $media ?></td>
-                    <td class="<?= strtolower($situacaoAluno($media)) ?>"><?= $situacaoAluno($media) ?></td>
+                    <td class="<?= strtolower($situacaoAluno($media))?>"><?= $situacaoAluno($media) ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
