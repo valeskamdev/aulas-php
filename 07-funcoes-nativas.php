@@ -81,6 +81,25 @@
     var_dump($gruposString);
     ?>
 
+    <h3>extract()</h3>
+    <?php 
+    // função que transforma um array em variáveis
+    $produto = [
+        "nome" => "Notebook",
+        "preco" => 2500,
+        "quantidade" => 10
+    ];
+
+    extract($produto);
+
+    ?>
+
+    <ul>
+        <li>ID: <?=$nome?></li>
+        <li>Nome: <?=$preco?></li>
+        <li>Quantidade: <?=$quantidade?></li>
+    </ul>
+
     <h2>Filtros</h2>
 
     <h2>Segurança</h2>
