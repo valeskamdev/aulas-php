@@ -67,7 +67,19 @@
     
     ?>
 
+    <hr>
+
     <h2>Arrays</h2>
+    <h3>implode()</h3>
+    
+    <?php 
+    // função que transforma um array em uma string
+    $grupos = ["Super Junior", "Blackpink", "DAY6", "EXO", "ATEEZ"];
+    $gruposString = implode(" - ", $grupos);
+
+    var_dump($grupos);
+    var_dump($gruposString);
+    ?>
 
     <h2>Filtros</h2>
 
