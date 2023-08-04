@@ -95,10 +95,20 @@
     ?>
 
     <ul>
-        <li>ID: <?=$nome?></li>
-        <li>Nome: <?=$preco?></li>
+        <li>Nome: <?=$nome?></li>
+        <li>Preço: <?=$preco?></li>
         <li>Quantidade: <?=$quantidade?></li>
     </ul>
+
+    <h3>array_sum()</h3>
+    <?php 
+    // função que soma os valores de um array
+    $total = array_sum($valores);
+
+    var_dump($valores);
+    var_dump($total);
+    
+    ?>
 
     <h2>Filtros</h2>
 
