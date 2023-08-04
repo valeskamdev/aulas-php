@@ -45,6 +45,28 @@
     
     ?>
 
+    <hr>
+
+    <h2>Numéricas</h2>
+    <h3>min, max, round</h3>
+
+    <?php 
+    $valores = [10, 5, 50, 1000, 275];
+    $valorQuebrado = 10.5;
+
+    $menorValor = min($valores);
+    $maiorValor = max($valores);
+    $valorQuebradoArredondado = round($valorQuebrado);
+
+    var_dump($valores);
+    var_dump($menorValor);
+    var_dump($maiorValor);
+
+    var_dump($valorQuebrado);
+    var_dump($valorQuebradoArredondado);
+    
+    ?>
+
     <h2>Arrays</h2>
 
     <h2>Filtros</h2>
