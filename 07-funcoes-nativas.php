@@ -33,8 +33,17 @@
 
     ?>
 
+    <h3>explode()</h3>
 
-    <h2>Numéricas</h2>
+    <?php 
+    // função que transforma uma string em um array
+    $linguagens = "Java, PHP, JavaScript, Python, C#";
+    $arrayLinguagens = explode(", ", $linguagens);
+
+    var_dump($linguagens);
+    var_dump($arrayLinguagens);
+    
+    ?>
 
     <h2>Arrays</h2>
 
