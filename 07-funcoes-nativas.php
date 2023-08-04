@@ -110,6 +110,17 @@
     
     ?>
 
+    <h3>array_unique()</h3>
+    <?php 
+    // função que remove valores duplicados de um array
+    $produtos = ["Nootbook", "Smartphone", "Tablet", "Smartphone", "Smartwatch", "Tablet"];
+    $produtosUnicos = array_unique($produtos);
+
+    var_dump($produtos);
+    var_dump($produtosUnicos);
+    
+    ?>
+
     <h2>Filtros</h2>
 
     <h2>Segurança</h2>
