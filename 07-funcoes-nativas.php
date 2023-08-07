@@ -146,7 +146,40 @@
 
     ?>
 
-    <h2>Segurança</h2>
+    <h2>Segurança (critografia de dados)</h2>
+
+    <?php
+    // senha em texto puro (plaintext)
+    $senha = "12wIP9";
+
+    // algoritmos mais comuns de criptografia: md5, sha1, sha256 (não recomendado)
+    $senhaCriptografadaMD5 = md5($senha);
+    $senhaCriptografadaSHA1 = sha1($senha);
+    $senhaCriptografadaSHA256 = hash("sha256", $senha);
+
+    var_dump($senha);
+    var_dump($senhaCriptografadaMD5);
+    var_dump($senhaCriptografadaSHA1);
+    var_dump($senhaCriptografadaSHA256);
+
+    // algoritmo mais seguro de criptografia: password_hash (recomendado)
+    $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
+    var_dump($senhaSegura);
+
+    // verificação de senha (hash)
+
+    //    if ($senha === $senhaSegura) {  // NÃO DÁ CERTO
+    //        echo "Senha correta";
+    //    } else {
+    //        echo "Senha incorreta";
+    //    }
+
+    if (password_verify($senha, $senhaSegura)) {
+        echo "Senha correta";
+    } else {
+        echo "Senha incorreta";
+    }
+    ?>
 
 </body>
 </html>
