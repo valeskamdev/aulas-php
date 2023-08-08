@@ -23,14 +23,17 @@
     } else {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
+        $idade = $_POST['idade'];
+        $interesses = $_POST['interesses'] ?? [];
         $mensagem = $_POST['mensagem'];
     ?>
 
         <h2>Dados recebidos</h2>
         <p>Nome: <?= $nome ?></p>
         <p>E-mail: <?= $email ?></p>
-
-        <?php if (!empty($mensagem)) { ?> <!-- Se a mensagem não estiver vazia, exibe -->
+        <p>Idade: <?= $idade ?></p>
+        <p>Interesses: <?= implode(", ", $interesses) ?></p>
+        <?php if (!empty($mensagem)) { ?>
             <p>Mensagem: <?= $mensagem ?></p>
     <?php }
     } ?>
