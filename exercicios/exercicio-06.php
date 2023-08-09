@@ -9,7 +9,7 @@
     <title>Exercício 06</title>
     <style>
         body {
-          background-color: #cbcbcb;
+          background-color: #d5d5d5;
           font-size: 1.2rem;
           font-family: Arial, Helvetica, sans-serif;
           height: 100vh;
@@ -39,7 +39,6 @@
             3 => "Ford",
             4 => "Bugatti"
         ];
-
         if (isset($_POST['enviar'])) {
             if(empty($_POST['nome']) || empty($_POST['preco']) || empty($_POST['fabricante'])) { ?>
                 <div class="d-flex align-items-center justify-content-center vh-100">
@@ -48,20 +47,17 @@
                     </div>
                 </div>
             <?php } else {
-
             $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
             $fabricante = filter_var($fabricantes[$_POST['fabricante']], FILTER_SANITIZE_SPECIAL_CHARS);
-            $preco = filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_NUMBER_FLOAT);
+            $preco = filter_input(INPUT_POST, 'preco', FILTER_VALIDATE_FLOAT);
             $disponibilidade = filter_input(INPUT_POST, 'disponibilidade', FILTER_SANITIZE_SPECIAL_CHARS);
             $descricao = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_SPECIAL_CHARS);
-
-
             ?>
             <div class="w-50 d-flex align-items-center justify-content-center flex-column vh-100 w-100">
                 <h1 class="mb-4">Carro cadastrado com sucesso!  ✅</h1>
                 <table class="table table-striped caption-top w-75">
-                    <caption class="text-center bg-secondary text-white">Informações do carro</caption>
-                    <tbody>
+                    <caption class="text-center bg-secondary bg-opacity-25">Informações do carro</caption>
+                    <tbody class="table-group-divider">
                     <tr>
                         <th scope="row">Nome</th>
                         <td><?= $nome ?></td>
@@ -70,13 +66,18 @@
                         <th scope="row">Fabricante</th>
                         <td><?= $fabricante ?></td>
                     </tr>
+                    <?php if(gettype($preco) != "string") {
+                        $precoFormatado = number_format($preco, 2, ",", "."); ?>
                     <tr>
-                        <?php if(gettype($preco) != "string") {
-                        $preco = number_format($_POST['preco'], 2, ",", "."); ?>
                         <th scope="row">Preço</th>
-                        <td>R$<?= $preco ?></td>
-                        <?php } ?>
+                        <td>R$<?= $precoFormatado ?></td>
                     </tr>
+                    <?php } else { $precoFormatado = ''; ?>
+                    <tr>
+                        <th scope="row">Preço</th>
+                        <td>R$<?= $precoFormatado ?></td>
+                    </tr>
+                    <?php } ?>
                     <tr>
                         <th scope="row">Disponibilidade</th>
                         <td><?= $disponibilidade ?></td>
@@ -115,7 +116,7 @@
                     <input type="number" class="form-control" id="exampleFormControlInput1" name="preco" min="100" max="10000" step=".01" required>
                 </div>
                 <div class="mb-3">
-                    <label for="sim" class="form-label">Disponibilidade: </label>
+                    <label for="sim" class="form-label">Disponibilidade</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="disponibilidade" id="sim" value="Sim" checked>
                         <label class="form-check-label" for="sim">
