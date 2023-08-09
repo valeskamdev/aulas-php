@@ -32,7 +32,9 @@
         <p>Nome: <?= $nome ?></p>
         <p>E-mail: <?= $email ?></p>
         <p>Idade: <?= $idade ?></p>
-        <p>Interesses: <?= implode(", ", $interesses) ?></p>
+        <?php if (!empty($interesses)) { ?>
+            <p>Interesses: <?= implode(", ", $interesses) ?></p>
+        <?php } ?>
         <?php if (!empty($mensagem)) { ?>
             <p>Mensagem: <?= $mensagem ?></p>
     <?php }
