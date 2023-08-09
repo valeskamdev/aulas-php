@@ -29,16 +29,27 @@
     ?>
 
         <h2>Dados recebidos</h2>
-        <p>Nome: <?= $nome ?></p>
-        <p>E-mail: <?= $email ?></p>
-        <p>Idade: <?= $idade ?></p>
-        <?php if (!empty($interesses)) { ?>
-            <p>Interesses: <?= implode(", ", $interesses) ?></p>
-        <?php } ?>
-        <?php if (!empty($mensagem)) { ?>
-            <p>Mensagem: <?= $mensagem ?></p>
-    <?php }
-    } ?>
+        <ul>
+            <li>Nome: <?= $nome ?></li>
+            <li>E-mail: <?= $email ?></li>
+            <li>Idade: <?= $idade ?></li>
+            <?php if (!empty($interesses)) { ?>
+                <li>Interesses: <?= implode(", ", $interesses) ?></li>
+                <li>Interesses: 
+                    <ul>
+                        <?php foreach ($interesses as $interesse) : ?>
+                            <li><?= $interesse ?></li>
+                        <?php endforeach ?>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php if (!empty($mensagem)) { ?>
+                <li>Mensagem: <?= $mensagem ?></li>
+            <?php } ?>
+        </ul>
+
+    <?php } ?>
+
 </body>
 
 </html>
