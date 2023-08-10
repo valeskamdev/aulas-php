@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>Exercício 06</title>
     <style>
-        /* Muito boa formatação! */
         body {
           background-color: #d5d5d5;
           font-size: 1.2rem;
@@ -44,22 +43,17 @@
             if(empty($_POST['nome']) || empty($_POST['preco']) || empty($_POST['fabricante'])) { ?>
                 <div class="d-flex align-items-center justify-content-center vh-100">
                     <div class="alert alert-warning" role="alert">
-                                                            <!-- Boa ideia usar script para voltar -->
                         Precisa preencher todos os campos! <a href="javascript:history.back()">Voltar</a>
                     </div>
                 </div>
             <?php } else {
             $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
             $fabricante = filter_var($fabricantes[$_POST['fabricante']], FILTER_SANITIZE_SPECIAL_CHARS);
-
-            /* Aqui no $preco, o ideal é sanitizar em vez de validar.
-            Você deverá usar dois filtros: um para sanitização de float e outro para permitir dígitos/casas
-            decimais. */
-            $preco = filter_input(INPUT_POST, 'preco', FILTER_VALIDATE_FLOAT);
-            
-
             $disponibilidade = filter_input(INPUT_POST, 'disponibilidade', FILTER_SANITIZE_SPECIAL_CHARS);
             $descricao = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_SPECIAL_CHARS);
+
+            // FILTER_FLAG_ALLOW_FRACTION permite que o usuário digite números com vírgula
+            $preco = filter_var($_POST['preco'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             ?>
             <div class="w-50 d-flex align-items-center justify-content-center flex-column vh-100 w-100">
                 <h1 class="mb-4">Carro cadastrado com sucesso!  ✅</h1>
@@ -74,9 +68,6 @@
                         <th scope="row">Fabricante</th>
                         <td><?= $fabricante ?></td>
                     </tr>
-
-                    <!-- Acho que nem precisava checar se não é string.
-                Na prática, o valor precisa ser formatado de qualquer forma -->
                     <?php if(gettype($preco) != "string") {
                         $precoFormatado = number_format($preco, 2, ",", "."); ?>
                     <tr>
@@ -116,8 +107,6 @@
                     <label for="fabricante" class="form-label">Fabricante</label>
                     <select class="form-select" aria-label="Default select example" id="fabricante" name="fabricante">
                         <option value="" selected disabled>Selecione uma marca</option>
-                        <!-- Certinho! Em uma situação real, o value será
-                        um id/chave primária vindo do banco -->
                         <?php foreach ($fabricantes as $key => $value) : ?>
                             <option value="<?= $key ?>"><?= $value ?></option>
                         <?php endforeach; ?>
